@@ -4,7 +4,7 @@
 
 | 🧩 Membro         | 🔗 GitHub                                           |
 |------------------|----------------------------------------------------|
-| 👤 Igor Rampazo   | [github.com/IgorRamapazo](https://github.com/IgorRamapazo)   |
+| 👤 Igor Rampazo   | [github.com/IgorRampazo](https://github.com/IgorRampazo)   |
 | 👤 Leo Barros     | [github.com/9HirOziN6](https://github.com/9HirOziN6)         |
 | 👤 Maria Menenzes | [github.com/mariazinha1024](https://github.com/mariazinha1024) |
 
@@ -16,7 +16,7 @@
 |------------------|--------------------------------------------|
 | Express          | `npm install express`                      |
 | JSON-Server      | `npm install -g json-server`               |
-| Session          | `npm install express express-session`      |
+| Session          | `npm install express-session`              |
 
 ---
 
