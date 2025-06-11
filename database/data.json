@@ -9,42 +9,66 @@
       "cidade": "Presidente Prudente",
       "uf": "SP",
       "cep": "19145-000"
+    },
+    {
+      "id": "e661",
+      "nome": "wrvrwv",
+      "cpf": "15935778963",
+      "email": "igorrampazo7@gmail.com",
+      "telefone": "(18) 99683-0946",
+      "cidade": "Alfredo Marcondes",
+      "uf": "MG",
+      "cep": "19180-000"
     }
   ],
   "fornecedores": [
     {
-      "id": "5fdf",
-      "nome": "Caio Gonzales",
+      "id": "be14",
+      "nome": "fbfb",
       "cnpj": "11444777000161",
-      "telefone": "18 99658-1478",
-      "cidade": "Presidente Prudente",
-      "uf": "SP",
-      "cep": "19275-000"
+      "telefone": "18996830946",
+      "cidade": "Alfredo Marcondes",
+      "uf": "MS",
+      "cep": "19180000"
     },
     {
-      "id": "e917",
-      "nome": "Roberto Carlos",
-      "cnpj": "11444777000167",
-      "telefone": "18 99874-2563",
+      "id": "84c7",
+      "nome": "rg geht",
+      "cnpj": "36.463.627/4664-26",
+      "telefone": "18 9968-3094",
       "cidade": "Alfredo Marcondes",
-      "uf": "SP",
-      "cep": "19180000"
+      "uf": "MA",
+      "cep": "19180-172"
     }
   ],
   "entregadores": [
     {
-      "id": "cb65",
-      "nome": "Luis Monfre",
-      "telefone": "18 99748-1515",
-      "cpf": "15247869845",
+      "id": "bf85",
+      "nome": "rgwrgr",
+      "telefone": "18996830945",
+      "cpf": "53904581848",
       "veiculo": "ABU-157"
     },
     {
-      "id": "cc67",
-      "nome": "Leo Pontes",
-      "telefone": "18 99563-1456",
-      "cpf": "25314589688",
-      "veiculo": "ABU-177"
+      "id": "9f8e",
+      "nome": "hthtr",
+      "telefone": "18997564512",
+      "cpf": "45612378945",
+      "veiculo": "ABU-157"
+    },
+    {
+      "id": "8fa2",
+      "nome": "Igor Fernando",
+      "telefone": "(18) 99683-0946",
+      "cpf": "53904589865",
+      "veiculo": "ABU-157"
+    },
+    {
+      "id": "cfed",
+      "nome": "Igor Fernando",
+      "telefone": "(18) 99683-0946",
+      "cpf": "53904589865",
+      "veiculo": "ABU-157"
     }
   ],
   "categorias": [

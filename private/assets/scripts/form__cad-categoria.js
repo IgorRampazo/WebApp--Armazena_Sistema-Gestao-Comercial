@@ -18,9 +18,11 @@ function carregarCategorias()
 function removerCategoria(id, nome) 
 {
    if (confirm(`Deseja realmente excluir a categoria: ${nome}?`))
+   {
       fetch(API_URL + '/' + id, { method: 'DELETE' })
          .then(() => carregarCategorias())
          .catch(error => console.error('Erro ao remover categoria:', error));
+   }
 }
 
 function registrarCategoria(categoria)
@@ -60,9 +62,13 @@ form.addEventListener('submit', function(e)
       showTable();
    }
    else if (form.checkValidity())
+   {
       alert('Categoria já cadastrada!');
+   }
    else 
+   {
       alert('Preencha todos os campos obrigatórios!');
+   }
 });
 
 function showTable() 

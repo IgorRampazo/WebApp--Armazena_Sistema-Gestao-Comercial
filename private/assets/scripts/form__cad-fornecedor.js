@@ -18,9 +18,11 @@ function carregarFornecedores()
 function removerFornecedor(id, nome)
 {
    if (confirm(`Deseja realmente excluir o fornecedor: ${nome}?`))
+   {
       fetch(API_URL + '/' + id, { method: 'DELETE' })
          .then(() => carregarFornecedores())
          .catch(error => console.error('Erro ao remover fornecedor:', error));
+   }
 }
 
 function registrarFornecedor(fornecedor)
@@ -61,14 +63,16 @@ form.addEventListener('submit', (e) =>
    {
       lista_fornecedor.push(fornecedor);
       registrarFornecedor(fornecedor);
-      showTable();
       form.reset();
+      showTable();
    }
    else
+   {
       if (form.checkValidity())
          alert('Fornecedor já cadastrado!');
       else
          alert('Preencha todos os campos obrigatórios!');
+   }
 });
 
 function showTable()
@@ -84,35 +88,61 @@ function showTable()
    else
    {
       table.style.background = '#fff';
-      const head = document.createElement('thead');
-      const body = document.createElement('tbody');
+
+      const thead = document.createElement('thead');
+      const trHead = document.createElement('tr');
 
       Object.keys(lista_fornecedor[0]).forEach(key =>
       {
-         const th = document.createElement('th');
-         th.innerText = key;
-         head.appendChild(th);
+         if (key !== 'id')
+         {
+            const th = document.createElement('th');
+            th.innerText = key;
+            trHead.appendChild(th);
+         }
       });
 
-      head.innerHTML += `<th>Ações</th>`;
+      const thAcoes = document.createElement('th');
+      thAcoes.innerText = 'Ações';
+      trHead.appendChild(thAcoes);
+      thead.appendChild(trHead);
+
+      const tbody = document.createElement('tbody');
 
       lista_fornecedor.forEach(fornecedor =>
       {
          const tr = document.createElement('tr');
 
-         Object.values(fornecedor).forEach(value =>
+         Object.entries(fornecedor).forEach(([key, value]) =>
          {
-            const td = document.createElement('td');
-            td.innerText = value;
-            tr.appendChild(td);
+            if (key !== 'id')
+            {
+               const td = document.createElement('td');
+               td.innerText = value;
+               tr.appendChild(td);
+            }
          });
 
-         tr.innerHTML += `<td><button class="btn btn-danger" onclick="removerFornecedor('${fornecedor.cnpj}')">Excluir</button></td>`;
-         body.appendChild(tr);
+         const tdAcoes = document.createElement('td');
+         const btnExcluir = document.createElement('button');
+         btnExcluir.className = 'btn btn-danger';
+         btnExcluir.innerText = 'Excluir';
+         
+         btnExcluir.onclick = () => {
+            if(fornecedor.id !== undefined) {
+               removerFornecedor(fornecedor.id, fornecedor.nome);
+            } else {
+               alert('ID do fornecedor não encontrado para exclusão.');
+            }
+         };
+
+         tdAcoes.appendChild(btnExcluir);
+         tr.appendChild(tdAcoes);
+         tbody.appendChild(tr);
       });
 
-      table.appendChild(head);
-      table.appendChild(body);
+      table.appendChild(thead);
+      table.appendChild(tbody);
    }
 }
 
