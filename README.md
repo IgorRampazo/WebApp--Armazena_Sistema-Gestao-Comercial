@@ -8,7 +8,7 @@
 | 👤 Leo Barros     | [github.com/9HirOziN6](https://github.com/9HirOziN6)         |
 | 👤 Maria Menenzes | [github.com/mariazinha1024](https://github.com/mariazinha1024) |
 
-----
+---
 
 ## ✅ Requisitos
 
