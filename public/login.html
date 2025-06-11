@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   <link rel="stylesheet" href="./assets/styles/form.css">
+   <title>Login/Cadastro</title>
+</head>
+<body>
+   <!-- **** Navegação **** -->
+   <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">SGP</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+         <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="./index.html">Home</a></li>
+         </ul>
+         <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+               <a class="btn btn-outline-primary ms-2" href="./login.html">Login / Cadastro</a>
+            </li>
+         </ul>
+      </div>
+   </nav>
+
+   <!-- **** Formulário de Cadastro **** -->
+   <!-- ...existing code... -->
+   <div class="container mt-5">
+      <div class="row justify-content-center align-items-start">
+         <!-- ? LOGIN ? -->
+         <form id="form-login" action="/login" method="POST" class="col-md-5 m-3 needs-validation border p-4">
+            <div class='alert alert-primary mt-0 mb-4 text-center'>Login</div>
+            <!-- ...campos do login... -->
+            <div class="mb-3">
+               <label class="form-label" for="inlineFormInputGroup">E-mail</label>
+               <div class="input-group mb-2">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" id="email-login" name="lUsuario" required autocomplete="off">
+               </div>
+            </div>
+            <div class="mb-5">
+               <label for="senha-login" class="form-label">Senha:</label>
+               <div class="input-group">
+                  <input type="password" class="form-control" id="senha-login" name="lSenha" required autocomplete="off">
+                  <button class="btn btn-outline-secondary" type="button" id="togglePasswordLogin">
+                     <i class="bi bi-eye"></i>
+                  </button>
+               </div>
+            </div>
+            <div class="text-center">
+               <button class="btn btn-warning" type="submit">Entrar</button>
+               <a href="../../index.html" class="btn btn-secondary">Voltar</a>
+            </div>
+         </form>
+
+         <!-- ? CADASTRO ? -->
+         <form id="form-register" action="#" method="POST" class="col-md-5 m-3 needs-validation border p-4">
+            <div class='alert alert-primary mt-0 mb-4 text-center'>Registre-se</div>
+            <!-- ...campos do registro... -->
+            <div class="mb-3">
+               <label for="nome" class="form-label">Nome</label>
+               <input type="text" class="form-control" id="nome" name="nome" required autocomplete="off">
+               <div class="invalid-feedback">Por favor, informe o nome do cliente!</div>
+            </div>
+            <div class="mb-3">
+               <label class="form-label" for="inlineFormInputGroup">E-mail</label>
+               <div class="input-group mb-2">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" id="email-register" name="email" required autocomplete="off">
+               </div>
+            </div>
+            <div class="mb-5">
+               <label for="senha-register" class="form-label">Senha:</label>
+               <div class="input-group">
+                  <input type="password" class="form-control" id="senha-register" name="senha" required autocomplete="off">
+                  <button class="btn btn-outline-secondary" type="button" id="togglePasswordRegister">
+                     <i class="bi bi-eye"></i>
+                  </button>
+               </div>
+            </div>
+            <div class="text-center">
+               <button class="btn btn-warning" type="submit">Cadastrar</button>
+               <a href="../../index.html" class="btn btn-secondary">Voltar</a>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <!-- **** Scripts **** -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   <script src="./assets/scripts/form__cad-usuario.js"></script>
+   
+   <script>
+      function addTogglePassword(inputId, btnId) 
+      {
+         const input = document.querySelector(inputId);
+         const btn = document.querySelector(btnId);
+
+         if (input && btn) 
+         {
+            btn.addEventListener('click', () => 
+            {
+               const type = input.getAttribute("type") === "password" ? "text" : "password";
+               input.setAttribute("type", type);
+               btn.querySelector("i").classList.toggle("bi-eye");
+               btn.querySelector("i").classList.toggle("bi-eye-slash");
+            });
+         }
+      }
+
+      addTogglePassword("#senha-login", "#togglePasswordLogin");
+      addTogglePassword("#senha-register", "#togglePasswordRegister");
+   </script>
+</body>
+</html>
