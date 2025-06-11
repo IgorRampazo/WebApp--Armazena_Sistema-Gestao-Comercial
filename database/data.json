@@ -118,17 +118,6 @@
       "imagem": ""
     },
     {
-      "id": "f0a1",
-      "codigo": "004",
-      "nome": "Prod 4",
-      "preco": "25,99",
-      "descricao": "descrição...",
-      "categoria": "1",
-      "fornecedor": "1",
-      "estoque": "120",
-      "imagem": "https://picsum.photos/200/300?random=2"
-    },
-    {
       "id": "8a43",
       "codigo": "005",
       "nome": "Prod 5",
@@ -149,6 +138,17 @@
       "fornecedor": "0",
       "estoque": "48",
       "imagem": "https://picsum.photos/200/300?random=4"
+    },
+    {
+      "id": "cf0e",
+      "codigo": "007",
+      "nome": "fr rwg",
+      "preco": "2273",
+      "descricao": "737",
+      "categoria": "0",
+      "fornecedor": "0",
+      "estoque": "7373",
+      "imagem": "https://picsum.photos/200/300?random=3"
     }
   ],
   "usuarios": [
