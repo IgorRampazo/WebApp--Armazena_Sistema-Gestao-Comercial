@@ -43,9 +43,10 @@ function getUserAuth()
       .catch(error => console.error('Erro ao buscar usuários:', error));
 }
 
+getUserAuth(); // ? Carrega os usuários do banco de dados
+
 app.post('/login', async (req, res) =>
 {
-   getUserAuth(); // ? Carrega os usuários do banco de dados
    const { lUsuario, lSenha } = req.body;
 
    if (usuarios.filter(u => u.email === lUsuario && u.senha === lSenha).length > 0)
