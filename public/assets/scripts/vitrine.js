@@ -9,6 +9,8 @@ function getDataProducts()
       .finally(() => pushDataCards());
 }
 
+getDataProducts();
+
 function pushDataCards()
 {
    const vitrine = document.querySelector('#vitrine');
