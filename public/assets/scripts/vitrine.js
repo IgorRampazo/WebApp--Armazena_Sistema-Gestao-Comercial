@@ -1,75 +1,52 @@
-/* function getDataProducts(lista)
-{
-   fetch('http://127.0.0.1:5500/data/data.json')
-      .then((resp) => resp.json())
-      .then(dados => dados[lista])
-      .catch(erro =>
-      {
-         console.error('Erro:', erro);
-         return null;
-      });
-}
- */
+let lista_produtos = [];
 
 function getDataProducts()
 {
-   return JSON.parse(localStorage.getItem('produtos')) || null;
+   fetch('http://localhost:4000/produtos')
+      .then((resp) => resp.json())
+      .then(dados => lista_produtos = dados)
+      .catch(() => lista_produtos = [])
+      .finally(() => pushDataCards());
 }
 
-function pushDataTable()
+function pushDataCards()
 {
-   const produtos = getDataProducts('produtos');
-   const table = document.querySelector('#tabela');
+   const vitrine = document.querySelector('#vitrine');
+   vitrine.innerHTML = '';
 
-   if (produtos) 
+   if (lista_produtos && lista_produtos.length > 0)
    {
-      table.style.background = '#fff';
-      let thead = document.createElement('thead');
-      let tbody = document.createElement('tbody');
+      vitrine.className = 'row justify-content-center';
 
-      const tr = document.createElement('tr');
-
-      Object.keys(produtos[0]).forEach(key =>
+      lista_produtos.forEach(produto =>
       {
-         const th = document.createElement('th');
-         th.innerHTML = key;
-         tr.appendChild(th);
+         const col = document.createElement('div');
+         col.className = 'col-12 col-sm-6 col-md-4 col-lg-3 mb-4';
+
+         const card = document.createElement('div');
+         const image = produto.imagem ? produto.imagem : '/images/default.jpg';
+         card.className = 'card h-100';
+         card.style.width = '100%';
+
+         card.innerHTML = `
+            <div class="card-body d-flex flex-column">
+               <img class="card-img-top mb-3" src="${image}" alt="Card image cap"
+                  style="height:200px;width:100%;object-fit:cover;">
+               <h5 class="card-title">${produto.nome}</h5>
+               <p class="card-text text-success fw-semibold">Preço: ${Number.parseFloat(produto.preco).toFixed(2)}</p>
+               <p class="card-text">Estoque: <span class="text-primary">${produto.estoque} unidades</span></p>
+               <a href="#" class="btn btn-dark w-100 mt-auto">Detalhes (Invalid Action)</a>
+            </div>
+         `;
+         col.appendChild(card);
+         vitrine.appendChild(col);
       });
-
-      thead.appendChild(tr);
-      table.appendChild(thead);
-
-      let lista_categoria = JSON.parse(localStorage.getItem('categorias')) || [];
-      let lista_fornecedor = JSON.parse(localStorage.getItem('fornecedores')) || [];
-
-      produtos.forEach(produto =>
-      {
-         const tr = document.createElement('tr');
-
-         Object.entries(produto).forEach(([key, value]) => 
-         {
-            const td = document.createElement('td');
-
-            if (key === 'fornecedor')
-               td.innerText = lista_fornecedor[value]?.nome || '';
-            else if (key === 'categoria')
-               td.innerText = lista_categoria[value]?.nome || '';
-            else
-               td.innerText = value;
-
-            tr.appendChild(td);
-         });
-         
-         tbody.appendChild(tr);
-      });
-
-      table.appendChild(tbody);
    }
    else
    {
-      table.style.background = 'none';
-      table.innerHTML = `<div class='alert alert-warning mt-0 mb-4 text-center'>Nenhum Produto Cadastrado!</div>`;
+      vitrine.className = '';
+      vitrine.innerHTML = `<div class='alert alert-warning mt-0 mb-4 text-center w-100'>Nenhum Produto Cadastrado!</div>`;
    }
 }
 
-pushDataTable();
+getDataProducts();
